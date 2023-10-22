@@ -14,6 +14,7 @@ tables = pd.read_sql("SELECT name FROM sqlite_master WHERE type='table';", conn)
 # Print the list of tables
 print(tables)
 
+#Get a list of countries in the database
 countries=pd.read_sql("SELECT * FROM Country;",conn)
 
 #print the list of countries
@@ -96,6 +97,21 @@ df.loc[:, 'England'] = list(leagues_by_season.loc[leagues_by_season['country_nam
 # Plot the data using a line chart
 df.plot(figsize=(12, 5), title='Average Goals per Game Over Time')
 
+#Create a DataFrame to store average goal differences for different countries and seasons
+df = pd.DataFrame(index=np.sort(leagues_by_season['season'].unique()), columns=leagues_by_season['country_name'].unique())
+plt.show()
+
+# Fill the DataFrame with average goal differences for specific countries
+df.loc[:, 'Germany'] = list(leagues_by_season.loc[leagues_by_season['country_name'] == 'Germany', 'avg_goal_difference'])
+df.loc[:, 'Spain'] = list(leagues_by_season.loc[leagues_by_season['country_name'] == 'Spain', 'avg_goal_difference'])
+df.loc[:, 'France'] = list(leagues_by_season.loc[leagues_by_season['country_name'] == 'France', 'avg_goal_difference'])
+df.loc[:, 'Italy'] = list(leagues_by_season.loc[leagues_by_season['country_name'] == 'Italy', 'avg_goal_difference'])
+df.loc[:, 'England'] = list(leagues_by_season.loc[leagues_by_season['country_name'] == 'England', 'avg_goal_difference'])
+
+# Plot the data using a line chart to visualize the average goal differences
+df.plot(figsize=(12, 5), title='Average Goals Difference Home vs Out')
+plt.show()
+
 # Query to calculate player data by height ranges
 players_height = pd.read_sql("""
     SELECT
@@ -125,3 +141,8 @@ print(players_height)
 
 # Plotting the relationship between average overall rating and height ranges
 players_height.plot(x='calc_height', y='avg_overall_rating', figsize=(12, 5), title='Potential vs Height')
+plt.show()
+
+
+
+
