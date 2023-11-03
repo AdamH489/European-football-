@@ -1,7 +1,7 @@
 # European-football-
-I utilised SQL to query a database
+I utilised SQL to query a database.
 
-I collected the data from https://www.kaggle.com/datasets/hugomathien/soccer/data and this data is in SQLite, therefore in the 'pythonProject' IDE, I connected to the SQLite database in order to query the data.
+I collected the data from https://www.kaggle.com/datasets/hugomathien/soccer/data and this data is in SQLite, therefore, I connected to the SQLite database in order to query the data.
 
 This is a large database with 25,000 matches, 10,000 players and the data was collected from the 2008 to 2016 seasons. Players and teams attributes were sourced from EA Sports' FIFA and the betting odds were from up to ten providers. With this database, I aim to showcase my SQL (specifically the SQLite implementation) skills whilst learning about the database. As a result, I won't analyse the findings of the data much but instead describe how I structured my queries to produce the output.
 
